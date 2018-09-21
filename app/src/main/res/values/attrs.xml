@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--CameraGLView-->
+    <attr name="gl_mirror" format="boolean" />
+    <declare-styleable name="CameraGLView">
+        <attr name="gl_mirror" />
+    </declare-styleable>
+</resources>
