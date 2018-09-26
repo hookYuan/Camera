@@ -9,6 +9,7 @@
     <com.yuan.camera.glsurface.GLView
         android:id="@+id/glCameraView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        app:gl_mirror="2" />
 
 </android.support.constraint.ConstraintLayout>

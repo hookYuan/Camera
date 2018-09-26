@@ -8,6 +8,9 @@ import java.util.List;
 /**
  * Created by YuanYe on 2018/8/27.
  * 管理摄像头数据绘制
+ * <p>
+ * 通过GLViewManager可以实现将一个摄像头等的数据同时显示到多个GLView之上
+ * GLViewManager需要配合数据源使用
  */
 public class GLViewManager implements SurfaceTexture.OnFrameAvailableListener {
 

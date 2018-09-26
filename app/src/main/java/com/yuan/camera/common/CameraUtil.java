@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.hardware.Camera;
 import android.util.Log;
 import android.view.Surface;
+import android.view.View;
+
+import com.yuan.camera.camera.CameraHelper;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -19,6 +23,10 @@ public class CameraUtil {
 
     private final static String TAG = "CameraUtil";
     private static final int TEN_DESIRED_ZOOM = 27;
+    public static final String PRIVEWWIDTH = "width";
+    public static final String PRIVEWHEIGHT = "height";
+
+
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
     /**
@@ -182,4 +190,44 @@ public class CameraUtil {
             }
         }
     }
+
+
+    /**
+     * 根据View的大小取和系统Camera预览的宽高比获取最大的View尺寸
+     *
+     * @param activity
+     * @return HashMap<></> key--width,value--height
+     */
+    public static HashMap<String, Integer> getBaseWidthHeight(Activity activity, int viewWidth, int viewHeight) {
+
+        int minSize = viewWidth > viewHeight ? viewHeight : viewWidth;
+        HashMap<String, Integer> map = new HashMap();
+
+        if (CameraHelper.getInstance().getRealPreviewHeight() == 0 ||
+                CameraHelper.getInstance().getRealPreviewWidth() == 0) {
+            map.put(PRIVEWWIDTH, viewWidth);
+            map.put(PRIVEWHEIGHT, viewHeight);
+            return map;
+        }
+        float previewWidth = CameraHelper.getInstance().getRealPreviewWidth();
+        float preViewHeight = CameraHelper.getInstance().getRealPreviewHeight();
+        //最大边/最小边
+        float rate = previewWidth > preViewHeight ? previewWidth / preViewHeight : preViewHeight / previewWidth;
+
+        float maxSize = minSize * rate;
+
+        //根据角度动态计算宽高比
+        int degrees = CameraUtil.getOrientationDegrees(activity, CameraHelper.getInstance().getmCameraId());
+        if (degrees == 90 || degrees == 270) {
+            viewHeight = (int) maxSize;
+            viewWidth = minSize;
+        } else {
+            viewHeight = (int) minSize;
+            viewWidth = (int) maxSize;
+        }
+        map.put(PRIVEWWIDTH, viewWidth);
+        map.put(PRIVEWHEIGHT, viewHeight);
+        return map;
+    }
+
 }

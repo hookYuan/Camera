@@ -73,6 +73,10 @@ public class CameraHelper implements Camera.PreviewCallback {
         openCamera(0, minWidth, callback);
     }
 
+    public void openCamera(int cameraId, int minWidth) {
+        openCamera(cameraId, minWidth, null);
+    }
+
     /**
      * 打开Camera
      *
