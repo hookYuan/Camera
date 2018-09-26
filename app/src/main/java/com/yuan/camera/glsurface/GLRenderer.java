@@ -11,17 +11,17 @@ import javax.microedition.khronos.opengles.GL10;
  * Created by YuanYe on 2018/8/24.
  * Camera渲染器
  */
-public class CameraRenderer implements GLSurfaceView.Renderer {
+public class GLRenderer implements GLSurfaceView.Renderer {
 
     private int mTextureID = -1; //对应纹理Id
     private DirectDrawer mDirectDrawer;
-    private boolean mirror = false;//是否对视频进行镜像处理
+    private int mirror = 0;//是否对视频进行镜像处理
 
-    public CameraRenderer() {
+    public GLRenderer() {
 
     }
 
-    public CameraRenderer(boolean mirror) {
+    public GLRenderer(int mirror) {
         this.mirror = mirror;
     }
 

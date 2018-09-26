@@ -19,7 +19,6 @@ public class TextureUtil {
     public static SurfaceTexture getInstance(int id) {
         if (mSurfaceTexture == null) {
             mSurfaceTexture = new SurfaceTexture(id);
-
             try {
                 mSurfaceTexture.detachFromGLContext();
             } catch (Exception e) {
@@ -44,7 +43,7 @@ public class TextureUtil {
     public synchronized static void draw(DirectDrawer mDirectDrawer, int mTextureID) {
 
         // TODO Auto-generated method stub
-//        Log.i(TAG, "开始绘制纹理Frame..." + mTextureID);
+        Log.i(TAG, "开始绘制纹理Frame..." + mTextureID);
         GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
         getInstance().attachToGLContext(mTextureID);
@@ -53,7 +52,7 @@ public class TextureUtil {
         getInstance().getTransformMatrix(mtx);
         mDirectDrawer.draw(mtx);
         getInstance().detachFromGLContext();
-//        Log.i(TAG, "完成绘制纹理Frame..." + mTextureID);
+        Log.i(TAG, "完成绘制纹理Frame..." + mTextureID);
     }
 
     private static int createTextureID() {

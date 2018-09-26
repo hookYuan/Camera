@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, SurfaceViewCamera.class));
                 break;
             case R.id.btn_camera_glSurfaceView:
-
+                startActivity(new Intent(this, GLSurfaceCamera.class));
                 break;
             case R.id.btn_uvcCamera_glSurfaceView:
 

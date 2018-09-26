@@ -62,21 +62,52 @@ public class DirectDrawer {
 
     private int texture;
 
-    public DirectDrawer(boolean mirror, int texture) {
-        if (mirror) {
-            textureVertices = new float[]{
-                    0.0f, 0.0f,
-                    0.0f, 1.0f,
-                    1.0f, 1.0f,
-                    1.0f, 0.0f,
-            };
-        } else {
-            textureVertices = new float[]{
-                    1.0f, 0.0f,
-                    1.0f, 1.0f,
-                    0.0f, 1.0f,
-                    0.0f, 0.0f,
-            };
+    /**
+     * @param mode    画面显示模式
+     *                0：0度正面
+     *                1：0度镜像
+     *                2: 90度正面
+     *                3: 90度镜像
+     * @param texture
+     */
+    public DirectDrawer(int mode, int texture) {
+        switch (mode) {
+            case 0:
+                //0度镜像
+                textureVertices = new float[]{
+                        0.0f, 0.0f,
+                        0.0f, 1.0f,
+                        1.0f, 1.0f,
+                        1.0f, 0.0f,
+                };
+                break;
+            case 1:
+                //0度无镜像
+                textureVertices = new float[]{
+                        1.0f, 0.0f,
+                        1.0f, 1.0f,
+                        0.0f, 1.0f,
+                        0.0f, 0.0f,
+                };
+                break;
+            case 2:
+                //90度 无镜像
+                textureVertices = new float[]{
+                        0.0f, 1.0f,
+                        1.0f, 1.0f,
+                        1.0f, 0.0f,
+                        0.0f, 0.0f,
+                };
+                break;
+            case 3:
+                //90度 镜像
+                textureVertices = new float[]{
+                        0.0f, 0.0f,
+                        1.0f, 0.0f,
+                        1.0f, 1.0f,
+                        0.0f, 1.0f,
+                };
+                break;
         }
         this.texture = texture;
         // initialize vertex byte buffer for shape coordinates

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yuan.camera">
 
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".simple.SurfaceViewCamera"
-            android:screenOrientation="sensor"></activity>
+            android:screenOrientation="sensor" />
+        <activity android:name=".simple.GLSurfaceCamera"></activity>
     </application>
 
 </manifest>
