@@ -36,7 +36,7 @@ public class GLView extends GLSurfaceView {
      */
     private void init(int mirror) {
         setEGLContextClientVersion(2);
-        setRenderer(new GLRenderer(3));
+        setRenderer(new GLRenderer(mirror));
         setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 }
