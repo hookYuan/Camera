@@ -21,7 +21,8 @@
         <activity
             android:name=".simple.SurfaceViewCamera"
             android:screenOrientation="sensor" />
-        <activity android:name=".simple.GLSurfaceCamera"></activity>
+        <activity android:name=".simple.GLSurfaceCamera" />
+        <activity android:name=".simple.UVCCameraActivity"></activity>
     </application>
 
 </manifest>
